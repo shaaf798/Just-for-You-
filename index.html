@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Love</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fbeff6;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background: #ffb3d9;
+      padding: 20px;
+      color: white;
+      font-size: 2rem;
+    }
+    nav {
+      margin: 20px 0;
+    }
+    nav button {
+      background: #ff66a3;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    nav button:hover {
+      background: #ff3385;
+    }
+    .page {
+      display: none;
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>For My Beautiful Wife 💗</header>  <nav>
+    <button onclick="showPage('home')">Home</button>
+    <button onclick="showPage('memories')">Our Memories</button>
+    <button onclick="showPage('reasons')">Reasons I Love You</button>
+    <button onclick="showPage('message')">Special Message</button>
+  </nav>  <div id="home" class="page active">
+    <h2>Welcome My Love 💗</h2>
+    <p>You are the most beautiful part of my life. This little website is a surprise just for you.</p>
+  </div>  <div id="memories" class="page">
+    <h2>Our Sweet Memories 📸</h2>
+    <p>Every moment with you is precious. Thank you for filling my life with happiness.</p>
+  </div>  <div id="reasons" class="page">
+    <h2>Reasons I Love You 💗</h2>
+    <ul style="text-align:left; max-width:500px; margin:auto;">
+      <li>Your smile brightens my whole world.</li>
+      <li>You care so deeply and love so purely.</li>
+      <li>You make every day meaningful.</li>
+      <li>You are my peace, my joy, my everything.</li>
+    </ul>
+  </div>  <div id="message" class="page">
+    <h2>A Special Message 💗</h2>
+    <p>My love, no matter where life takes us, I will always choose you. Forever and always.</p>
+  </div>  <script>
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+    }
+  </script></body>
+</html>
