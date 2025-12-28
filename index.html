@@ -2,7 +2,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>For My Beautiful Lovely Wife 🤌🏻</title>
+  <title>For My Beautiful Lovely Wife 🤌🏻💗</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -10,15 +10,21 @@
       margin: 0;
       padding: 0;
       text-align: center;
+      overflow-x: hidden;
+      position: relative;
     }
     header {
       background: #ffb3d9;
       padding: 20px;
       color: white;
       font-size: 2rem;
+      position: relative;
+      z-index: 1;
     }
     nav {
       margin: 20px 0;
+      position: relative;
+      z-index: 1;
     }
     nav button {
       background: #ff66a3;
@@ -41,6 +47,8 @@
       background: white;
       border-radius: 15px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 1;
     }
     .active {
       display: block;
@@ -59,13 +67,24 @@
       border-radius: 12px;
       font-size: 1.1rem;
     }
+    .heart {
+      position: fixed;
+      font-size: 24px;
+      animation: fall 5s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @keyframes fall {
+      0% {transform: translateY(-50px) rotate(0deg); opacity: 1;}
+      100% {transform: translateY(110vh) rotate(360deg); opacity: 0;}
+    }
   </style>
 </head>
 <body>
   <header>For My Beautiful Lovely Wife 🤌🏻💗</header>  <!-- Background Music -->  <audio id="bg-music" loop>
     <source src="music.mp3" type="audio/mpeg">
   </audio>
-  <button onclick="toggleMusic()" style="position:fixed;bottom:20px;right:20px;padding:10px 15px;border:none;border-radius:30px;background:#ff66a3;color:white;font-size:14px;">🎵 Music</button>  <nav>
+  <button onclick="toggleMusic()" style="position:fixed;bottom:20px;right:20px;padding:10px 15px;border:none;border-radius:30px;background:#ff66a3;color:white;font-size:14px;z-index:1;">🎵 Music</button>  <nav>
     <button onclick="showPage('home')">Home</button>
     <button onclick="showPage('memories')">Our Memories</button>
     <button onclick="showPage('reasons')">Reasons I Love You</button>
@@ -104,5 +123,18 @@
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById(pageId).classList.add('active');
     }
+
+    // Falling hearts animation
+    const emojis = ['🤌🏻','💗'];
+    function createHeart(){
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = (Math.random()*24 + 24) + 'px';
+      heart.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+      document.body.appendChild(heart);
+      setTimeout(()=>heart.remove(),5000);
+    }
+    setInterval(createHeart, 500);
   </script></body>
 </html>
