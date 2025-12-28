@@ -2,7 +2,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>For Hafiza Ayesha 💗</title>
+  <title>For My Love 💗</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -41,6 +41,23 @@
       background: white;
       border-radius: 15px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    .page::before {
+      content: "Hafiza Ayesha";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-30deg);
+      font-size: 5rem;
+      color: rgba(255, 102, 163, 0.1);
+      z-index: 0;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .page * {
+      position: relative;
+      z-index: 1;
     }
     .active {
       display: block;
@@ -59,19 +76,10 @@
       border-radius: 12px;
       font-size: 1.1rem;
     }
-    #day-counter {
-      background: #ffe6f2;
-      padding: 15px;
-      border-radius: 12px;
-      font-size: 1.2rem;
-      margin: 15px auto;
-      width: fit-content;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    }
   </style>
 </head>
 <body>
-  <header>For Hafiza Ayesha 💗</header>  <!-- Background Music -->  <audio id="bg-music" loop>
+  <header>For My Love 💗</header>  <!-- Background Music -->  <audio id="bg-music" loop>
     <source src="music.mp3" type="audio/mpeg">
   </audio>
   <button onclick="toggleMusic()" style="position:fixed;bottom:20px;right:20px;padding:10px 15px;border:none;border-radius:30px;background:#ff66a3;color:white;font-size:14px;">🎵 Music</button>  <nav>
@@ -79,12 +87,12 @@
     <button onclick="showPage('memories')">Our Memories</button>
     <button onclick="showPage('reasons')">Reasons I Love You</button>
     <button onclick="showPage('message')">Special Message</button>
-  </nav>  <div id="day-counter">💗 Hafiza Ayesha & Me — <span id="days">0</span> days of love 💗</div>  <div id="home" class="page active">
-    <h2>Welcome My Love Hafiza Ayesha 💗</h2>
-    <p>You are the most beautiful part of my life, Hafiza Ayesha.</p>
+  </nav>  <div id="home" class="page active">
+    <h2>Welcome My Love 💗</h2>
+    <p>You are the most beautiful part of my life.</p>
   </div>  <div id="memories" class="page">
     <h2>Our Sweet Memories 💗</h2>
-    <p>Some moments with you, Hafiza Ayesha, I want to remember forever.</p>
+    <p>Some moments I want to remember forever.</p>
     <img src="photo1.jpg" class="memory-img">
     <img src="photo2.jpg" class="memory-img">
     <img src="photo3.jpg" class="memory-img">
@@ -94,8 +102,8 @@
     <div class="note">With you, every ordinary moment becomes special.</div>
     <div class="note">My heart feels at home when I'm with you.</div>
   </div>  <div id="message" class="page">
-    <h2>My Promise to You, Hafiza Ayesha 💗</h2>
-    <p>I promise to stand by you, love you deeply, and choose you every single day. This website is just a small reflection of my endless love for you, Hafiza Ayesha.</p>
+    <h2>My Promise to You 💗</h2>
+    <p>I promise to stand by you, love you deeply, and choose you every single day. This website is just a small reflection of my endless love for you.</p>
   </div>  <script>
     // Auto-start music on first user interaction
     document.addEventListener('click', function autoPlayOnce() {
@@ -113,16 +121,5 @@
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById(pageId).classList.add('active');
     }
-
-    // Days counter
-    function updateDays() {
-      var start = new Date('27 November 2024');
-      var now = new Date();
-      var diff = now - start;
-      var days = Math.floor(diff / (1000*60*60*24));
-      document.getElementById('days').textContent = days;
-    }
-    setInterval(updateDays, 1000);
-    updateDays();
   </script></body>
 </html>
