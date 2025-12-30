@@ -3,27 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>For My Beautiful Lovely Wife 🤌🏻💗</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box;}
 
 body{
   margin:0;
-  font-family: Arial, sans-serif;
+  font-family:Arial, sans-serif;
   text-align:center;
-  color:white;
   background:
     linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
     url("moon.jpg") no-repeat center center fixed;
   background-size:cover;
+  color:white;
   overflow-x:hidden;
 }
 
-/* HEADER */
+/* Header */
 header{
   background:#f7b6d2;
   padding:22px;
@@ -31,57 +28,50 @@ header{
   color:white;
 }
 
-/* NAV */
+/* Navigation */
 nav{
   margin:20px 0;
 }
-
 nav button{
   background:#f06292;
   color:white;
   border:none;
-  padding:12px 22px;
+  padding:12px 20px;
   margin:8px;
-  border-radius:30px;
+  border-radius:25px;
   font-size:1rem;
   cursor:pointer;
 }
-
 nav button:hover{
   background:#ec407a;
 }
 
-/* PAGES */
+/* Pages */
 .page{
   display:none;
-  max-width:700px;
+  max-width:720px;
   margin:20px auto;
   padding:22px;
-  background:#ffffff;
+  background:white;
   color:#333;
-  border-radius:25px;
-  box-shadow:0 15px 40px rgba(0,0,0,0.4);
+  border-radius:22px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.35);
 }
+.page.active{display:block;}
+.page h2{color:#ec407a;}
 
-.page.active{
-  display:block;
-}
-
-.page h2{
-  color:#ec407a;
-}
-
-/* NOTES */
+/* Notes */
 .note{
   background:#fde4ef;
   padding:18px;
-  margin:15px;
-  border-radius:20px;
+  margin:15px 10px;
+  border-radius:18px;
   font-size:1.05rem;
   color:#333;
+  line-height:1.6;
 }
 
-/* IMAGES */
+/* Images */
 .memory-img{
   width:90%;
   max-width:400px;
@@ -90,7 +80,7 @@ nav button:hover{
   box-shadow:0 6px 20px rgba(0,0,0,0.3);
 }
 
-/* MUSIC BUTTON */
+/* Music Button */
 .music-btn{
   position:fixed;
   bottom:20px;
@@ -98,19 +88,19 @@ nav button:hover{
   background:#f06292;
   color:white;
   border:none;
-  padding:12px 20px;
+  padding:12px 18px;
   border-radius:50px;
   font-size:14px;
   cursor:pointer;
   z-index:10;
 }
 
-/* EMOJI ANIMATION */
+/* Emoji Animation */
 .emoji{
   position:fixed;
   top:-40px;
-  font-size:26px;
   animation:fall 6s linear infinite;
+  font-size:26px;
   pointer-events:none;
   z-index:0;
 }
@@ -126,8 +116,7 @@ nav button:hover{
 
 <header>For My Beautiful Lovely Wife 🤌🏻💗</header>
 
-<!-- MUSIC -->
-<audio id="bgMusic" loop>
+<audio id="bg-music" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
@@ -135,79 +124,78 @@ nav button:hover{
 
 <nav>
   <button onclick="showPage('home')">Home</button>
-  <button onclick="showPage('only')">Only For You</button>
+  <button onclick="showPage('memories')">Only For You</button>
   <button onclick="showPage('reasons')">Reasons I Love You</button>
   <button onclick="showPage('message')">Special Message</button>
 </nav>
 
-<!-- HOME -->
 <div id="home" class="page active">
-  <h2>Welcome 💗</h2>
-  <p>
-    You are the most beautiful part of my life.  
-    This small website is just a little reflection of my feelings.
-  </p>
+  <h2>Welcome My Love 💗</h2>
+  <p>You are the most beautiful part of my life. This website is just a small reflection of my endless love for you.</p>
 </div>
 
-<!-- ONLY FOR YOU -->
-<div id="only" class="page">
+<div id="memories" class="page">
   <h2>Only For You 💗</h2>
   <p>Some moments I want to remember forever.</p>
-
   <img src="photo1.jpg" class="memory-img">
   <img src="photo2.jpg" class="memory-img">
   <img src="photo3.jpg" class="memory-img">
 </div>
 
-<!-- REASONS -->
 <div id="reasons" class="page">
-  <h2>There are so many 💗</h2>
+  <h2>Reasons I Love You 💗</h2>
 
-  <div class="note">You are my favorite hello and my hardest goodbye.</div>
-  <div class="note">With you, every ordinary moment becomes special.</div>
-  <div class="note">My heart feels at home when I'm with you.</div>
+  <div class="note">
+    Acha isky ilawa bht reasons hn 💗<br><br>
+    Your Eyes 👀 <br>
+    Your Lips 👄 <br>
+    Your Nose 👃🏻 <br>
+    Your Eyebrows 👁️ <br>
+    Your Beautiful Neck 🐍 <br>
+    Your Hair 🖤 <br>
+    Your Voice 🍬 <br><br>
+    And the most important thing is <b>YOU 🌍</b><br><br>
+    You are my everything. I love you and every single part of you 🤌🏻💗
+  </div>
+
 </div>
 
-<!-- MESSAGE -->
 <div id="message" class="page">
-  <h2>My Promise 💗</h2>
+  <h2>My Promise to You 💗</h2>
   <p>
-    I promise to stand by you, love you deeply,  
-    and choose you every single day.
+    I promise to stand by you, love you deeply, and choose you every single day.
+    This website is just a small reflection of my endless love for you.
   </p>
 </div>
 
 <script>
-// PAGE SWITCH
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
 
-// MUSIC CONTROL
-let music = document.getElementById("bgMusic");
+function toggleMusic(){
+  const m=document.getElementById("bg-music");
+  if(m.paused){m.play();}else{m.pause();}
+}
 
-document.addEventListener("click", function autoPlay(){
-  music.play();
-  document.removeEventListener("click", autoPlay);
+// auto play after first touch
+document.addEventListener('click',function auto(){
+  document.getElementById("bg-music").play();
+  document.removeEventListener('click',auto);
 });
 
-function toggleMusic(){
-  if(music.paused){ music.play(); }
-  else{ music.pause(); }
-}
-
-// EMOJI RAIN
-const emojis = ["💗","🌙","💋"];
-function dropEmoji(){
-  const e = document.createElement("div");
+// emoji animation
+const emojis=["💗","🌙","💋"];
+setInterval(()=>{
+  const e=document.createElement("div");
   e.className="emoji";
-  e.style.left=Math.random()*100+"vw";
   e.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+  e.style.left=Math.random()*100+"vw";
+  e.style.fontSize=(Math.random()*20+20)+"px";
   document.body.appendChild(e);
   setTimeout(()=>e.remove(),6000);
-}
-setInterval(dropEmoji,600);
+},600);
 </script>
 
 </body>
