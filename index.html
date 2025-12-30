@@ -39,6 +39,7 @@ nav button{
   margin:6px;
   border-radius:20px;
   font-size:1rem;
+  cursor:pointer;
 }
 
 /* PAGES */
@@ -156,9 +157,35 @@ h2{
   opacity: 1;
   transform: translateY(0);
 }
+
+/* TYPEWRITER */
+.typewriter{
+  overflow: hidden;
+  white-space: pre-wrap;
+  border-right: .15em solid #ff4f9a;
+  animation: typing 12s steps(500, end), blink 0.75s step-end infinite;
+}
+@keyframes typing{
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes blink{
+  50% { border-color: transparent; }
+}
+
+/* SLOW HEARTBEAT FOR TYPEWRITER MESSAGE */
+.heartbeat.typewriter{
+  animation: heartbeat 3s ease-in-out infinite;
+}
+
+/* HIGHLIGHT NAME */
+.highlight{
+  color:#ff4f9a;
+  font-weight:bold;
+  text-shadow:0 0 8px #ff4f9a;
+}
 </style>
 </head>
-
 <body>
 
 <header>For My Beautiful Lovely Wife <span class="heartbeat">🤌🏻💗</span></header>
@@ -197,39 +224,50 @@ h2{
     </span>
   </div>
 
-  <div class="note fade-glow heartbeat scroll-fade">
-    You're more than my soulmate.<br><br>
-    <b>You're ya ruh al-ruh.</b>
-  </div>
-
-  <div class="note fade-glow scroll-fade" style="text-align:right;">
-    تم بچھڑو گے تو میں مر جاؤں گا ؟؟<br><br>
-    نہیں میں مروں گا بالکل نہیں<br>
-    میں ہمیشہ روؤں گا بھی نہیں<br>
-    لیکن میں ہنسنا چھوڑ دوں گا ،<br><br>
-    میں کسی سے تمہارا ذکر نہیں کروں گا<br>
-    لیکن میں تمہارے بارے میں سوچوں گا ،<br><br>
-    میں تمہیں دعاؤں میں مانگنا چھوڑ دوں گا<br>
-    لیکن ہمیشہ تمہارے لیے دعا کروں گا ،<br><br>
-    میں تمہیں جان کہنا چھوڑ دوں گا<br>
-    لیکن جان سے پیارے تم ہمیشہ رہو گے ،<br><br>
-    میں سانس تو لوں گا<br>
-    لیکن جینا چھوڑ دوں گا ۔
-  </div>
-
-  <div class="note fade-glow scroll-fade">
-    Meri rooh ko chhua hai tumne<br><br>
-    yakeen mano tumse juda hona ab mere bas ki baat nahi
-  </div>
-
-  <div class="note fade-glow scroll-fade" style="text-align:right;">
-    میرے اختیار میں اگر ہو تو<br>
-    تمہیں گلے لگا کر محبت کی اک لکیر کھینچ دوں<br>
-    کہ کوئی تم تک پہنچ نہ سکے ،<br><br>
-    کوئی غم تمہیں کبھی نہ ستائے<br>
-    سارے خواب حقیقتوں میں بدل سکوں ،<br><br>
-    تمہارے دن رات،<br>
-    صبح شام محبتوں سے سجا سکوں۔
+  <div class="note fade-glow heartbeat scroll-fade typewriter">
+    <span class="highlight">Ayesha</span>, main aapse bohat pyaar karta hoon… bohat zyada 🤌🏻💗<br><br>
+    Kehtay hain na ke aap apne mehboob ko kabhi yeh sabit nahi kar sakte
+    ke aap us se kitna pyaar karte ho,
+    aur shayad yeh baat bilkul sahi hai.
+    Aapko bhi lagta hoga ke mere dil mein bohat kuch hai,
+    par haqeeqat yeh hai ke main bata bhi nahi sakta…<br><br>
+    Yaar meri baat suno na,
+    aapko pata hai na main thora masoom sa hoon 🥺
+    thora sa bacha hoon, abhi chota hoon,
+    aur aap toh bari ho na,
+    is liye mujh se naraaz na hua karo.
+    Mujh se baat kiya karo,
+    mujhe samjhaya karo —
+    main samajh jaaunga.<br><br>
+    Mujhe thori dair se samajh aati hai,
+    par aa jaati hai…
+    bas chhorna mat.
+    Bohat takleef hoti thi jab aap ne mujhe har jagah se block kar diya tha 💔
+    Main chah kar bhi aapse baat nahi kar sakta tha…<br><br>
+    Yeh rasta thora lamba hai abhi,
+    mujhe bas hamesha aapke saath rehna hai.
+    Baaki sab aap khud dekh lena na.
+    Maaf kar diya karna,
+    main maafi maang liya karunga.<br><br>
+    Kabhi daant diya karna,
+    kuch ulta kar doon toh maar bhi liya karna —
+    kuch nahi bolunga…
+    bas haath mat chhorna mera.
+    Beech raaste mein mujhe akela mat karna 🤍<br><br>
+    Aapke baghair main ek qadam bhi aage nahi jaa sakta.
+    Jahan aap mujhe chhor kar jaaogi,
+    wahin meri qabar ban jaayegi…
+    Yaqeen karo,
+    mujh mein ab kuch bhi baqi nahi raha.<br><br>
+    Move on?
+    Mujhe toh khayal mein bhi yeh lafz maut jaisa lagta hai.
+    Bas mere saath rehna,
+    mera saath dena hamesha 🤌🏻💗<br><br>
+    Main sab kuch kar loonga,
+    sab se lar loonga,
+    agar aap mere saath ho.
+    Bas yehi chahiye —
+    aur kuch nahi chahiye 🤍
   </div>
 </div>
 
@@ -264,75 +302,13 @@ h2{
   <h2>Special Message 💗</h2>
 
   <div class="note fade-glow scroll-fade" style="text-align:right;">
-    آپ کو پتا ہے میں آپ کو اتنا سوچتا ہوں<br>
-    کہ آپ مجھے دکھائی دیتی ہیں
+    آپ کو پتا ہے میں آپ کو اتنا سوچتا ہوں کہ آپ مجھے دیکھائی دیتی ہیں
   </div>
 
   <div class="note fade-glow scroll-fade" style="text-align:center;">
     Ab koi nahi aayega mere dil mein,<br>
     maine saari mohabbat tum par khatam kar di hai<br><br>
     Aur dil ke darwaze band kar diye hain 💗
-  </div>
-
-  <div class="note fade-glow scroll-fade" style="text-align:right; line-height:1.9;">
-    Ayesha, main aapse bohat pyaar karta hoon… bohat zyada 🤍<br><br>
-    Kehtay hain na ke ap apne mehboob ko kabhi yeh sabit nahi kar sakte
-    ke aap us se kitna pyaar karte ho… shayad yeh baat sach hai.
-    Aapko bhi lagta hoga ke bohat kuch hai mere dil mein,
-    par haqeeqat yeh hai ke main bata bhi nahi sakta 💭<br><br>
-
-    Aur suno na meri baat…
-    Aapko pata hai na main thora masoom sa hoon 🥺
-    thora sa bacha hoon, abhi chota hoon…
-    aur aap bari ho na,
-    is liye mujh se naraaz na hua karo,
-    mujh se baat kiya karo,
-    mujhe samjhaya karo —
-    main samajh jaaunga 🤍<br><br>
-
-    Mujhe thori dair se samajh aati hai,
-    par aa jaati hai…
-    bas chora na karo.
-    Bohat takleef hoti thi jab aap ne mujhe har jagah se block kar diya tha 💔
-    Main chah kar bhi aapse baat nahi kar sakta tha…<br><br>
-
-    Yeh rasta thora lamba hai abhi,
-    bas mujhe hamesha aapke saath rehna hai.
-    Baaki sab aap khud dekh lena na…
-    Maaf kar diya karna,
-    main maafi maang liya karunga 🤍<br><br>
-
-    Kabhi daant diya karna,
-    kuch ulta kar doon to maar bhi liya karna —
-    kuch nahi bolunga…
-    bas haath mat chorna mera.
-    Beech raaste mein mujhe akela mat karna 💞<br><br>
-
-    Aapke baghair main ek qadam bhi aage nahi jaa sakta.
-    Jahan aap mujhe chhor kar jaaogi,
-    wahin meri qabar ban jaayegi…
-    Yaqeen karo,
-    mujh mein ab kuch baqi nahi raha 🖤<br><br>
-
-    Move on?
-    Mujhe toh khayal mein bhi yeh lafz maut jaisa lagta hai.
-    Bas mere saath rehna,
-    mera saath dena hamesha 🤌🏻💗<br><br>
-
-    Main sab kuch kar lunga,
-    sab se lar lunga,
-    agar aap mere saath ho…
-    Bas yahi chahiye,
-    aur kuch nahi 🤍
-  </div>
-
-  <div class="note fade-glow scroll-fade" style="text-align:right; line-height:1.9;">
-    Ayesha me apse bht Pyaar karta hn… 🥺💗<br><br>
-    Kehty hn ap apny mehboob ko kabi ye Sabit ni kar sakty…<br>
-    Shayad apko lagta ho ga bht kuch, par hakeekat me bata b ni sakta…<br>
-    Jab apne mujy har jaga se block kia howa tha 💔, bht takleef hui…<br><br>
-    Yeh rasta thora lamba hy, mujy bas hamesha apke sath rehna hy…<br>
-    Sab kuch kar lo ga agar ap mere sath ho 🤌🏻💗
   </div>
 
   <div class="final-love heartbeat scroll-fade">
@@ -407,4 +383,4 @@ window.addEventListener('load', displayScrollElements);
 </script>
 
 </body>
-</html>
+  </html>
