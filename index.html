@@ -190,8 +190,21 @@ h2{
 
 <header>For My Beautiful Lovely Wife <span class="heartbeat">🤌🏻💗</span></header>
 
-<audio id="bgMusic" loop>
-  <source src="music.mp3" type="audio/mpeg">
+<!-- Background Music for each category -->
+<audio id="musicHome" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="musicOnly" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="musicReasons" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="musicSpecial" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" type="audio/mpeg">
 </audio>
 
 <button class="music-btn" onclick="toggleMusic()">🎵 Music</button>
@@ -226,7 +239,7 @@ h2{
 
   <div class="note fade-glow scroll-fade">
     تم بچھڑو گے تو میں مر جاؤں گا ؟؟<br>
-    نہیں میں مروں گا بالکل نہیں، میں ہمیشہ رؤں گا بھی نہیں لیکن میں ہنسنا چھوڑ دوں گا، میں کسی سے تمہارا ذکر نہیں کروں گا لیکن میں تمہارے بارے میں سوچوں گا، میں تمہیں دعاؤں میں مانگنا چھوڑ دوں گا لیکن ہمیشہ تمہارے لیے دعا کروں گا، میں تمہیں جان کہنا چھوڑ دوں گا لیکن جان سے پیارے تم ہمیشہ رہو گے تمہیں پتہ ہے ؟؟ میں سانس تو لوں گا لیکن جینا چھوڑ دوں گا۔
+    نہیں میں مروں گا بالکل نہیں، میں ہمیشہ رؤں گا بھی نہیں لیکن میں ہنسنا چھوڑ دوں گا، میں کسی سے تمہارا ذکر نہیں کروں گا لیکن ہمیشہ تمہارے لیے دعا کروں گا، میں تمہیں جان کہنا چھوڑ دوں گا لیکن جان سے پیارے تم ہمیشہ رہو گے تمہیں پتہ ہے ؟؟ میں سانس تو لوں گا لیکن جینا چھوڑ دوں گا۔
   </div>
 
   <div class="note fade-glow scroll-fade">
@@ -283,18 +296,33 @@ h2{
 </div>
 
 <script>
-let music=document.getElementById("bgMusic");
-
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  music.play();
+
+  // Pause all music
+  document.querySelectorAll('audio').forEach(a => a.pause());
+
+  // Play music for the selected page
+  if(id==="home") document.getElementById("musicHome").play();
+  if(id==="only") document.getElementById("musicOnly").play();
+  if(id==="reasons") document.getElementById("musicReasons").play();
+  if(id==="special") document.getElementById("musicSpecial").play();
+
   if(id==="special") loveBurst();
 }
 
 function toggleMusic(){
-  if(music.paused) music.play();
-  else music.pause();
+  let audios = Array.from(document.querySelectorAll('audio'));
+  let current = audios.find(a => !a.paused);
+  if(current) current.pause();
+  else{
+    let activePage = document.querySelector('.page.active').id;
+    if(activePage==="home") document.getElementById("musicHome").play();
+    if(activePage==="only") document.getElementById("musicOnly").play();
+    if(activePage==="reasons") document.getElementById("musicReasons").play();
+    if(activePage==="special") document.getElementById("musicSpecial").play();
+  }
 }
 
 /* Falling emojis */
@@ -324,7 +352,13 @@ function loveBurst(){
 }
 
 /* Auto-play music once */
-document.addEventListener("click",()=>music.play(),{once:true});
+document.addEventListener("click",()=>{
+  let activePage = document.querySelector('.page.active').id;
+  if(activePage==="home") document.getElementById("musicHome").play();
+  if(activePage==="only") document.getElementById("musicOnly").play();
+  if(activePage==="reasons") document.getElementById("musicReasons").play();
+  if(activePage==="special") document.getElementById("musicSpecial").play();
+},{once:true});
 
 /* Scroll Fade Animation */
 const scrollElements = document.querySelectorAll('.scroll-fade');
