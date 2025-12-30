@@ -97,13 +97,71 @@ h2{
   padding:12px 16px;
   border-radius:30px;
   font-size:14px;
+  cursor:pointer;
+}
+
+/* SOFT HEARTBEAT ANIMATION */
+.heartbeat {
+  display: inline-block;
+  animation: heartbeat 2s ease-in-out infinite;
+  transform-origin: center;
+}
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.05); }
+  50% { transform: scale(1.1); }
+  75% { transform: scale(1.05); }
+}
+
+/* FINAL LOVE ANIMATION */
+.final-love{
+  margin-top:25px;
+  font-size:2rem;
+  font-weight:bold;
+  color:#ff4f9a;
+  animation:loveGlow 3s ease-in-out infinite;
+}
+@keyframes loveGlow{
+  0%{opacity:.4;text-shadow:0 0 5px #ff4f9a;}
+  50%{opacity:1;text-shadow:0 0 25px #ff4f9a;}
+  100%{opacity:.6;text-shadow:0 0 10px #ff4f9a;}
+}
+
+/* BURST EFFECT */
+.burst{
+  position:fixed;
+  font-size:32px;
+  animation:burstFly 1.8s ease-out forwards;
+  pointer-events:none;
+  z-index:999;
+}
+@keyframes burstFly{
+  0%{transform:translate(0,0) scale(.5);opacity:1;}
+  100%{
+    transform:translate(
+      calc(-150px + 300px * var(--x)),
+      calc(-150px + 300px * var(--y))
+    ) scale(1.4);
+    opacity:0;
+  }
+}
+
+/* SCROLL FADE */
+.scroll-fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+.scroll-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>
 </head>
 
 <body>
 
-<header>For My Beautiful Lovely Wife 🤌🏻💗</header>
+<header>For My Beautiful Lovely Wife <span class="heartbeat">🤌🏻💗</span></header>
 
 <audio id="bgMusic" loop>
   <source src="music.mp3" type="audio/mpeg">
@@ -119,7 +177,7 @@ h2{
 </nav>
 
 <!-- HOME -->
-<div id="home" class="page active fade-glow">
+<div id="home" class="page active fade-glow scroll-fade">
   <h2>Welcome 💗</h2>
   <p>You are the most beautiful part of my life.</p>
 </div>
@@ -130,7 +188,7 @@ h2{
 
   <h3 style="color:#ec407a;">Dill ki baaty 💌</h3>
 
-  <div class="note" style="text-align:center;">
+  <div class="note fade-glow scroll-fade" style="text-align:center;">
     <span style="color:#444;">بِسمِ اللهِ الرَّحْمنِ الرَّحِيمِ</span><br><br>
     <span style="color:#888;">اللَّهُمَّ اكْتُبْنَا لِبَعْضِنَا فِي النَّصِيبِ</span><br><br>
     <span style="color:#ec407a;">
@@ -139,12 +197,12 @@ h2{
     </span>
   </div>
 
-  <div class="note fade-glow">
+  <div class="note fade-glow heartbeat scroll-fade">
     You're more than my soulmate.<br><br>
     <b>You're ya ruh al-ruh.</b>
   </div>
 
-  <div class="note fade-glow" style="text-align:right;">
+  <div class="note fade-glow scroll-fade" style="text-align:right;">
     تم بچھڑو گے تو میں مر جاؤں گا ؟؟<br><br>
     نہیں میں مروں گا بالکل نہیں<br>
     میں ہمیشہ روؤں گا بھی نہیں<br>
@@ -159,12 +217,12 @@ h2{
     لیکن جینا چھوڑ دوں گا ۔
   </div>
 
-  <div class="note fade-glow">
+  <div class="note fade-glow scroll-fade">
     Meri rooh ko chhua hai tumne<br><br>
     yakeen mano tumse juda hona ab mere bas ki baat nahi
   </div>
 
-  <div class="note fade-glow" style="text-align:right;">
+  <div class="note fade-glow scroll-fade" style="text-align:right;">
     میرے اختیار میں اگر ہو تو<br>
     تمہیں گلے لگا کر محبت کی اک لکیر کھینچ دوں<br>
     کہ کوئی تم تک پہنچ نہ سکے ،<br><br>
@@ -179,11 +237,11 @@ h2{
 <div id="reasons" class="page fade-glow">
   <h2>Reasons I Love You 💗</h2>
 
-  <div class="note">You are my favorite hello and my hardest goodbye.</div>
-  <div class="note">With you, every ordinary moment becomes special.</div>
-  <div class="note">My heart feels at home when I'm with you.</div>
+  <div class="note scroll-fade">You are my favorite hello and my hardest goodbye.</div>
+  <div class="note scroll-fade">With you, every ordinary moment becomes special.</div>
+  <div class="note scroll-fade">My heart feels at home when I'm with you.</div>
 
-  <div class="note">
+  <div class="note scroll-fade">
     Acha isky ilawa bohot reasons hain 💗<br><br>
     Your Eyes 👀<br>
     Your Lips 👄<br>
@@ -196,7 +254,7 @@ h2{
     I love you and every single part of you 🤌🏻💗
   </div>
 
-  <div class="note">
+  <div class="note scroll-fade">
     Madam Jee, I fall for your beauty and your soul every single day 💗
   </div>
 </div>
@@ -205,31 +263,99 @@ h2{
 <div id="special" class="page fade-glow">
   <h2>Special Message 💗</h2>
 
-  <div class="note" style="text-align:right;">
+  <div class="note fade-glow scroll-fade" style="text-align:right;">
     آپ کو پتا ہے میں آپ کو اتنا سوچتا ہوں<br>
     کہ آپ مجھے دکھائی دیتی ہیں
   </div>
 
-  <h3 style="color:#ec407a;">I Love You Madam Jee 🤌🏻💗</h3>
+  <div class="note fade-glow scroll-fade" style="text-align:center;">
+    Ab koi nahi aayega mere dil mein,<br>
+    maine saari mohabbat tum par khatam kar di hai<br><br>
+    Aur dil ke darwaze band kar diye hain 💗
+  </div>
+
+  <div class="note fade-glow scroll-fade" style="text-align:right; line-height:1.9;">
+    Ayesha, main aapse bohat pyaar karta hoon… bohat zyada 🤍<br><br>
+    Kehtay hain na ke ap apne mehboob ko kabhi yeh sabit nahi kar sakte
+    ke aap us se kitna pyaar karte ho… shayad yeh baat sach hai.
+    Aapko bhi lagta hoga ke bohat kuch hai mere dil mein,
+    par haqeeqat yeh hai ke main bata bhi nahi sakta 💭<br><br>
+
+    Aur suno na meri baat…
+    Aapko pata hai na main thora masoom sa hoon 🥺
+    thora sa bacha hoon, abhi chota hoon…
+    aur aap bari ho na,
+    is liye mujh se naraaz na hua karo,
+    mujh se baat kiya karo,
+    mujhe samjhaya karo —
+    main samajh jaaunga 🤍<br><br>
+
+    Mujhe thori dair se samajh aati hai,
+    par aa jaati hai…
+    bas chora na karo.
+    Bohat takleef hoti thi jab aap ne mujhe har jagah se block kar diya tha 💔
+    Main chah kar bhi aapse baat nahi kar sakta tha…<br><br>
+
+    Yeh rasta thora lamba hai abhi,
+    bas mujhe hamesha aapke saath rehna hai.
+    Baaki sab aap khud dekh lena na…
+    Maaf kar diya karna,
+    main maafi maang liya karunga 🤍<br><br>
+
+    Kabhi daant diya karna,
+    kuch ulta kar doon to maar bhi liya karna —
+    kuch nahi bolunga…
+    bas haath mat chorna mera.
+    Beech raaste mein mujhe akela mat karna 💞<br><br>
+
+    Aapke baghair main ek qadam bhi aage nahi jaa sakta.
+    Jahan aap mujhe chhor kar jaaogi,
+    wahin meri qabar ban jaayegi…
+    Yaqeen karo,
+    mujh mein ab kuch baqi nahi raha 🖤<br><br>
+
+    Move on?
+    Mujhe toh khayal mein bhi yeh lafz maut jaisa lagta hai.
+    Bas mere saath rehna,
+    mera saath dena hamesha 🤌🏻💗<br><br>
+
+    Main sab kuch kar lunga,
+    sab se lar lunga,
+    agar aap mere saath ho…
+    Bas yahi chahiye,
+    aur kuch nahi 🤍
+  </div>
+
+  <div class="note fade-glow scroll-fade" style="text-align:right; line-height:1.9;">
+    Ayesha me apse bht Pyaar karta hn… 🥺💗<br><br>
+    Kehty hn ap apny mehboob ko kabi ye Sabit ni kar sakty…<br>
+    Shayad apko lagta ho ga bht kuch, par hakeekat me bata b ni sakta…<br>
+    Jab apne mujy har jaga se block kia howa tha 💔, bht takleef hui…<br><br>
+    Yeh rasta thora lamba hy, mujy bas hamesha apke sath rehna hy…<br>
+    Sab kuch kar lo ga agar ap mere sath ho 🤌🏻💗
+  </div>
+
+  <div class="final-love heartbeat scroll-fade">
+    I Love You Madam Jee 🤌🏻💗
+  </div>
 </div>
 
 <script>
+let music=document.getElementById("bgMusic");
+
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
+  music.play();
   if(id==="special") loveBurst();
 }
 
 function toggleMusic(){
-  const m=document.getElementById("bgMusic");
-  if(m.paused) m.play();
-  else m.pause();
+  if(music.paused) music.play();
+  else music.pause();
 }
 
-document.addEventListener("click",()=>{
-  document.getElementById("bgMusic").play();
-},{once:true});
-
+/* Falling emojis */
 const emojis=["💗","🌙","💋"];
 setInterval(()=>{
   const e=document.createElement("div");
@@ -240,16 +366,44 @@ setInterval(()=>{
   setTimeout(()=>e.remove(),6000);
 },500);
 
+/* Burst animation */
 function loveBurst(){
   for(let i=0;i<25;i++){
     const b=document.createElement("div");
-    b.className="heart";
+    b.className="burst";
     b.innerText=emojis[Math.floor(Math.random()*3)];
     b.style.left="50%";
+    b.style.top="60%";
+    b.style.setProperty("--x",Math.random());
+    b.style.setProperty("--y",Math.random());
     document.body.appendChild(b);
-    setTimeout(()=>b.remove(),1500);
+    setTimeout(()=>b.remove(),1800);
   }
 }
+
+/* Auto-play music once */
+document.addEventListener("click",()=>music.play(),{once:true});
+
+/* Scroll Fade Animation */
+const scrollElements = document.querySelectorAll('.scroll-fade');
+
+function elementInView(el) {
+  const rect = el.getBoundingClientRect();
+  return (
+    rect.top <= (window.innerHeight || document.documentElement.clientHeight) - 50
+  );
+}
+
+function displayScrollElements() {
+  scrollElements.forEach(el => {
+    if (elementInView(el)) {
+      el.classList.add('visible');
+    }
+  });
+}
+
+window.addEventListener('scroll', displayScrollElements);
+window.addEventListener('load', displayScrollElements);
 </script>
 
 </body>
