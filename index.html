@@ -129,19 +129,33 @@ nav button:hover{
   <button onclick="showPage('message')">Special Message</button>
 </nav>
 
+<!-- HOME PAGE -->
 <div id="home" class="page active">
   <h2>Welcome My Love 💗</h2>
   <p>You are the most beautiful part of my life. This website is just a small reflection of my endless love for you.</p>
 </div>
 
+<!-- ONLY FOR YOU -->
 <div id="memories" class="page">
   <h2>Only For You 💗</h2>
-  <p>Some moments I want to remember forever.</p>
+
+  <!-- Dill ki baaty Subheading -->
+  <h3 style="color:#ec407a; margin-top:15px;">Dill ki baaty 💌</h3>
+
+  <!-- Your message with different colors -->
+  <p style="font-size:1.1rem; line-height:1.6; margin:5px 0;">
+    <span style="color:#2c2c2c;">بِسمِ اللهِ الرَّحْمنِ الرَّحِيمِ</span><br>
+    <span style="color:#f5e6f0;">اللَّهُمَّ اكْتُبْنَا لِبَعْضِنَا فِي النَّصِيبِ</span><br>
+    <span style="color:#ff66a3;">اے الله ! ہم دونوں کو ایک دوسرے کے نصیب میں لکھ دے (آمین)</span>
+  </p>
+
+  <p>Some moments I want to remember forever:</p>
   <img src="photo1.jpg" class="memory-img">
   <img src="photo2.jpg" class="memory-img">
   <img src="photo3.jpg" class="memory-img">
 </div>
 
+<!-- REASONS I LOVE YOU -->
 <div id="reasons" class="page">
   <h2>Reasons I Love You 💗</h2>
 
@@ -164,7 +178,7 @@ nav button:hover{
     You are my everything. I love you and every single part of you 🤌🏻💗
   </div>
 
-  <!-- NEW 5TH ROMANTIC & FLIRTY MESSAGE -->
+  <!-- 5TH ROMANTIC MESSAGE -->
   <div class="note">
     Madam Jee, every time I look at you, I get lost in your beauty 💗🌙<br>
     Your smile makes my heart race, your eyes captivate me, and your presence lights up every room 💋<br>
@@ -175,6 +189,7 @@ nav button:hover{
 
 </div>
 
+<!-- SPECIAL MESSAGE -->
 <div id="message" class="page">
   <h2>My Promise to You 💗</h2>
   <p>
@@ -184,23 +199,26 @@ nav button:hover{
 </div>
 
 <script>
+// PAGE SWITCH
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
 
-function toggleMusic(){
-  const m=document.getElementById("bg-music");
-  if(m.paused){m.play();}else{m.pause();}
-}
+// MUSIC CONTROL
+let music = document.getElementById("bg-music");
 
-// auto play after first touch
-document.addEventListener('click',function auto(){
-  document.getElementById("bg-music").play();
-  document.removeEventListener('click',auto);
+document.addEventListener("click", function autoPlay(){
+  music.play();
+  document.removeEventListener("click", autoPlay);
 });
 
-// emoji animation
+function toggleMusic(){
+  if(music.paused){ music.play(); }
+  else{ music.pause(); }
+}
+
+// EMOJI RAIN
 const emojis=["💗","🌙","💋"];
 setInterval(()=>{
   const e=document.createElement("div");
