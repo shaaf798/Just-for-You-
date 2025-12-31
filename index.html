@@ -1,8 +1,11 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Beautiful Lovely Wife 🤌🏻💗</title><style>
+<title>For My Beautiful Lovely Wife 🤌🏻💗</title>
+<style>
+/* GENERAL */
 body{
   margin:0;
   font-family: Arial, sans-serif;
@@ -16,6 +19,40 @@ body{
   text-align:center;
 }
 
+/* LOCK SCREEN */
+#lockScreen {
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,.85);
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+#lockScreen input{
+  padding:10px;
+  font-size:18px;
+  width:120px;
+  text-align:center;
+  border-radius:10px;
+  border:none;
+  margin-top:10px;
+}
+#lockScreen button{
+  padding:10px 20px;
+  margin-top:10px;
+  border:none;
+  border-radius:10px;
+  background:#f06292;
+  color:white;
+  cursor:pointer;
+  font-size:16px;
+}
+
+/* HEADER */
 header{
   background:#f7b7d3;
   color:white;
@@ -23,6 +60,7 @@ header{
   font-size:1.8rem;
 }
 
+/* NAV */
 nav{
   margin:15px;
 }
@@ -37,6 +75,7 @@ nav button{
   cursor:pointer;
 }
 
+/* PAGES */
 .page{
   display:none;
   background:white;
@@ -47,8 +86,11 @@ nav button{
 }
 .active{display:block;}
 
-h2{color:#ec407a;}
+h2{
+  color:#ec407a;
+}
 
+/* NOTES */
 .note{
   background:#fde4ee;
   padding:15px;
@@ -58,55 +100,167 @@ h2{color:#ec407a;}
   line-height:1.6;
 }
 
-.fade-glow{animation:fade 2s ease;}
-@keyframes fade{from{opacity:0;transform:translateY(15px);}to{opacity:1;transform:translateY(0);}}
+/* FADE GLOW */
+.fade-glow{
+  animation:fade 2s ease;
+}
+@keyframes fade{
+  from{opacity:0;transform:translateY(15px);}
+  to{opacity:1;transform:translateY(0);}
+}
 
-.heart{position:fixed;top:-10px;font-size:24px;animation:fall 6s linear infinite;pointer-events:none;}
-@keyframes fall{to{transform:translateY(110vh);opacity:0;}}
+/* FALLING EMOJIS */
+.heart{
+  position:fixed;
+  top:-10px;
+  font-size:24px;
+  animation:fall 6s linear infinite;
+}
+@keyframes fall{
+  to{transform:translateY(110vh);opacity:0;}
+}
 
-.music-btn{position:fixed;bottom:15px;right:15px;background:#f06292;color:white;border:none;padding:12px 16px;border-radius:30px;font-size:14px;cursor:pointer;}
+/* MUSIC BUTTON */
+.music-btn{
+  position:fixed;
+  bottom:15px;
+  right:15px;
+  background:#f06292;
+  color:white;
+  border:none;
+  padding:12px 16px;
+  border-radius:30px;
+  font-size:14px;
+  cursor:pointer;
+}
 
-.heartbeat {display: inline-block;animation: heartbeat 2s ease-in-out infinite;transform-origin: center;}
-@keyframes heartbeat {0%,100%{transform:scale(1);}25%{transform:scale(1.05);}50%{transform:scale(1.1);}75%{transform:scale(1.05);}}
+/* SOFT HEARTBEAT ANIMATION */
+.heartbeat {
+  display: inline-block;
+  animation: heartbeat 2s ease-in-out infinite;
+  transform-origin: center;
+}
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.05); }
+  50% { transform: scale(1.1); }
+  75% { transform: scale(1.05); }
+}
 
-.final-love{margin-top:25px;font-size:2rem;font-weight:bold;color:#ff4f9a;animation:loveGlow 3s ease-in-out infinite;}
-@keyframes loveGlow{0%{opacity:.4;text-shadow:0 0 5px #ff4f9a;}50%{opacity:1;text-shadow:0 0 25px #ff4f9a;}100%{opacity:.6;text-shadow:0 0 10px #ff4f9a;}}
+/* FINAL LOVE ANIMATION */
+.final-love{
+  margin-top:25px;
+  font-size:2rem;
+  font-weight:bold;
+  color:#ff4f9a;
+  animation:loveGlow 3s ease-in-out infinite;
+}
+@keyframes loveGlow{
+  0%{opacity:.4;text-shadow:0 0 5px #ff4f9a;}
+  50%{opacity:1;text-shadow:0 0 25px #ff4f9a;}
+  100%{opacity:.6;text-shadow:0 0 10px #ff4f9a;}
+}
 
-.burst{position:fixed;font-size:32px;animation:burstFly 1.8s ease-out forwards;pointer-events:none;z-index:999;}
-@keyframes burstFly{0%{transform:translate(0,0) scale(.5);opacity:1;}100%{transform:translate(calc(-150px + 300px * var(--x)), calc(-150px + 300px * var(--y))) scale(1.4);opacity:0;}}
+/* BURST EFFECT */
+.burst{
+  position:fixed;
+  font-size:32px;
+  animation:burstFly 1.8s ease-out forwards;
+  pointer-events:none;
+  z-index:999;
+}
+@keyframes burstFly{
+  0%{transform:translate(0,0) scale(.5);opacity:1;}
+  100%{
+    transform:translate(
+      calc(-150px + 300px * var(--x)),
+      calc(-150px + 300px * var(--y))
+    ) scale(1.4);
+    opacity:0;
+  }
+}
 
-.scroll-fade {opacity: 0; transform: translateY(20px); transition: opacity 1s ease-out, transform 1s ease-out;}
-.scroll-fade.visible {opacity: 1; transform: translateY(0);}
+/* SCROLL FADE */
+.scroll-fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+.scroll-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-.typewriter{overflow: hidden;white-space: pre-wrap;border-right: .15em solid #ff4f9a;animation: typing 12s steps(500, end), blink 0.75s step-end infinite;}
-@keyframes typing{from { width: 0; } to { width: 100%; }}
-@keyframes blink{50% { border-color: transparent; }}
+/* TYPEWRITER */
+.typewriter{
+  overflow: hidden;
+  white-space: pre-wrap;
+  border-right: .15em solid #ff4f9a;
+  animation: typing 12s steps(500, end), blink 0.75s step-end infinite;
+}
+@keyframes typing{
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes blink{
+  50% { border-color: transparent; }
+}
 
-.heartbeat.typewriter{animation: heartbeat 3s ease-in-out infinite;}
-.highlight{color:#ff4f9a;font-weight:bold;text-shadow:0 0 8px #ff4f9a;}
-</style></head>
-<body><header>For My Beautiful Lovely Wife <span class="heartbeat">🤌🏻💗</span></header><audio id="musicHome" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3" type="audio/mpeg">
+/* SLOW HEARTBEAT FOR TYPEWRITER MESSAGE */
+.heartbeat.typewriter{
+  animation: heartbeat 3s ease-in-out infinite;
+}
+
+/* HIGHLIGHT NAME */
+.highlight{
+  color:#ff4f9a;
+  font-weight:bold;
+  text-shadow:0 0 8px #ff4f9a;
+}
+</style>
+</head>
+<body>
+
+<!-- LOCK SCREEN -->
+<div id="lockScreen">
+  <h2>Enter PIN to Unlock</h2>
+  <input type="password" id="pinInput" placeholder="PIN">
+  <button onclick="checkPin()">Unlock</button>
+  <p id="errorMsg" style="color:red;margin-top:10px;"></p>
+</div>
+
+<header>For My Beautiful Lovely Wife <span class="heartbeat">🤌🏻💗</span></header>
+
+<!-- Background Music for each category -->
+<audio id="musicHome" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
 </audio>
 <audio id="musicOnly" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3" type="audio/mpeg">
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
 </audio>
 <audio id="musicReasons" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg">
 </audio>
 <audio id="musicSpecial" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3" type="audio/mpeg">
-</audio><button class="music-btn" onclick="toggleMusic()">🎵 Music</button>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-btn" onclick="toggleMusic()">🎵 Music</button>
 
 <nav>
   <button onclick="showPage('home')">Home</button>
   <button onclick="showPage('only')">Only For You</button>
   <button onclick="showPage('reasons')">Reasons I Love You</button>
   <button onclick="showPage('special')">Special Message</button>
-</nav><div id="home" class="page active fade-glow scroll-fade">
+</nav>
+
+<!-- PAGES -->
+<div id="home" class="page active fade-glow scroll-fade">
   <h2>Welcome 💗</h2>
   <p>You are the most beautiful part of my life.</p>
-</div><div id="only" class="page fade-glow">
+</div>
+
+<div id="only" class="page fade-glow">
   <h2>Only For You 💗</h2>
   <h3 style="color:#ec407a;">Dill ki baaty 💌</h3>
   <div class="note fade-glow scroll-fade" style="text-align:center;">
@@ -116,20 +270,26 @@ h2{color:#ec407a;}
       اے الله !<br>
       ہم دونوں کو ایک دوسرے کے نصیب میں لکھ دے (آمین)
     </span>
-  </div>  <div class="note fade-glow scroll-fade">
+  </div>
+  <div class="note fade-glow scroll-fade">
     تم بچھڑو گے تو میں مر جاؤں گا ؟؟<br>
     نہیں میں مروں گا بالکل نہیں، میں ہمیشہ رؤں گا بھی نہیں لیکن میں ہنسنا چھوڑ دوں گا، میں کسی سے تمہارا ذکر نہیں کروں گا لیکن ہمیشہ تمہارے لیے دعا کروں گا، میں تمہیں جان کہنا چھوڑ دوں گا لیکن جان سے پیارے تم ہمیشہ رہو گے تمہیں پتہ ہے ؟؟ میں سانس تو لوں گا لیکن جینا چھوڑ دوں گا۔
-  </div>  <div class="note fade-glow scroll-fade">
+  </div>
+  <div class="note fade-glow scroll-fade">
     Meri rooh ko chhua hai tumne<br>
     yakeen mano tumse juda hona ab mere bas ki baat nahi
-  </div>  <div class="note fade-glow scroll-fade">
+  </div>
+  <div class="note fade-glow scroll-fade">
     میرے اختیار میں اگر ہو تو " تمہیں گلے لگا کر تمہارے چاروں طرف محبت کی اک لکیر کھینچ دوں کہ کوئی تم تک پہنچ نہ سکے، کوئی غم تمہیں کبھی نہ ستائے سارے خواب حقیقتوں میں بدل سکوں، تمہارے دن رات، صبح شام محبتوں سے سجا سکوں۔
   </div>
-</div><div id="reasons" class="page fade-glow">
+</div>
+
+<div id="reasons" class="page fade-glow">
   <h2>Reasons I Love You 💗</h2>
   <div class="note scroll-fade">You are my favorite hello and my hardest goodbye.</div>
   <div class="note scroll-fade">With you, every ordinary moment becomes special.</div>
-  <div class="note scroll-fade">My heart feels at home when I'm with you.</div>  <div class="note scroll-fade">
+  <div class="note scroll-fade">My heart feels at home when I'm with you.</div>
+  <div class="note scroll-fade">
     Acha isky ilawa bohot reasons hain 💗<br><br>
     Your Eyes 👀<br>
     Your Lips 👄<br>
@@ -140,84 +300,109 @@ h2{color:#ec407a;}
     Your Voice 🍬<br><br>
     Aur sab se important — <b>YOU 🌍</b><br><br>
     I love you and every single part of you 🤌🏻💗
-  </div>  <div class="note scroll-fade">
+  </div>
+  <div class="note scroll-fade">
     Madam Jee, I fall for your beauty and your soul every single day 💗
   </div>
-</div><div id="special" class="page fade-glow">
+</div>
+
+<div id="special" class="page fade-glow">
   <h2>Special Message 💗</h2>
   <div class="note fade-glow scroll-fade" style="text-align:right;">
     آپ کو پتا ہے میں آپ کو اتنا سوچتا ہوں کہ آپ مجھے دیکھائی دیتی ہیں
-  </div>  <div class="note fade-glow scroll-fade heartbeat typewriter">
+  </div>
+  <div class="note fade-glow scroll-fade heartbeat typewriter">
     Ayesha, me apse bht Pyaar karta hn bht zaida kehty hn ap apny mehbob ko kabi ye Sabit ni kar sakty ky ap us se kitna Pyaar karty ho or shayad sai baat hy apko b lagta ho ga bht kuch par hakeekat me bata b ni sakta or yaar baat suny na mera apko pata hy me masoom sa hn thora 🥺bacha hn abi chota par ap tu bari hn na ap naraz ni howa kary muj se baat kia kary mujy samjaya kary me samaj jao ga mujy thori late samaj ati hy par a jati hy par chora ni kary bht takleef hoti thi jab apne mujy har jaga se block kia howa tha me chah kar b apse baat ni tha kar sakta 💔ye rasta thora lamba hy abi mujy bas hamesha apke sath rehna hy baki sab ap khud daikh lena na maaf kar dia karna me maafi mango jab dant dia karna kuch ulta karo tu mar b lia karna kuch ni bolo ga par hath na chorna mera beech rasty me apke begair ik kadam b agy ni jao ga wahin kabar bany gi jidr ap chor kar jayee gi yakeen kary mere me ab kuch raha hi ni hy baki move on kya hota me tu khiyal me b esa kuch socho tu mout nazar ati hy samny bas mere sath rehna mera Sath Dena hamesha me sab kuch kar lo ga sab se lar lo ga agar ap mere sath ho gi tu bas yehi chahiy or kuch ni chahiy 🤌🏻💗
-  </div>  <div class="note fade-glow scroll-fade" style="text-align:center;">
+  </div>
+  <div class="note fade-glow scroll-fade" style="text-align:center;">
     Ab koi nhi aayega mere dil me maine sari mohabbat tum pr khtm kr di Or dil ke darwaze band kar diye hai
   </div>
-</div><script>
+</div>
+
+<script>
+const correctPin = "1824";
+function checkPin() {
+  const input = document.getElementById("pinInput").value;
+  if(input === correctPin){
+    document.getElementById("lockScreen").style.display="none";
+  } else {
+    document.getElementById("errorMsg").innerText="Incorrect PIN!";
+  }
+}
+
+// PAGE NAVIGATION AND MUSIC
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
+
   document.querySelectorAll('audio').forEach(a => a.pause());
-  if(id==='home') document.getElementById('musicHome').play();
-  if(id==='only') document.getElementById('musicOnly').play();
-  if(id==='reasons') document.getElementById('musicReasons').play();
-  if(id==='special') document.getElementById('musicSpecial').play();
-  if(id==='special') loveBurst();
+  if(id==="home") document.getElementById("musicHome").play();
+  if(id==="only") document.getElementById("musicOnly").play();
+  if(id==="reasons") document.getElementById("musicReasons").play();
+  if(id==="special") document.getElementById("musicSpecial").play();
+  if(id==="special") loveBurst();
 }
 
 function toggleMusic(){
   let audios = Array.from(document.querySelectorAll('audio'));
-  let current = audios.find(a=>!a.paused);
+  let current = audios.find(a => !a.paused);
   if(current) current.pause();
   else{
     let activePage = document.querySelector('.page.active').id;
-    if(activePage==='home') document.getElementById('musicHome').play();
-    if(activePage==='only') document.getElementById('musicOnly').play();
-    if(activePage==='reasons') document.getElementById('musicReasons').play();
-    if(activePage==='special') document.getElementById('musicSpecial').play();
+    if(activePage==="home") document.getElementById("musicHome").play();
+    if(activePage==="only") document.getElementById("musicOnly").play();
+    if(activePage==="reasons") document.getElementById("musicReasons").play();
+    if(activePage==="special") document.getElementById("musicSpecial").play();
   }
 }
 
-const emojis=['💗','🌙','💋'];
+/* Falling emojis */
+const emojis=["💗","🌙","💋"];
 setInterval(()=>{
-  const e=document.createElement('div');
-  e.className='heart';
+  const e=document.createElement("div");
+  e.className="heart";
   e.innerText=emojis[Math.floor(Math.random()*3)];
-  e.style.left=Math.random()*100+'vw';
+  e.style.left=Math.random()*100+"vw";
   document.body.appendChild(e);
   setTimeout(()=>e.remove(),6000);
 },500);
 
+/* Burst animation */
 function loveBurst(){
   for(let i=0;i<25;i++){
-    const b=document.createElement('div');
-    b.className='burst';
+    const b=document.createElement("div");
+    b.className="burst";
     b.innerText=emojis[Math.floor(Math.random()*3)];
-    b.style.left='50%';
-    b.style.top='60%';
-    b.style.setProperty('--x',Math.random());
-    b.style.setProperty('--y',Math.random());
+    b.style.left="50%";
+    b.style.top="60%";
+    b.style.setProperty("--x",Math.random());
+    b.style.setProperty("--y",Math.random());
     document.body.appendChild(b);
     setTimeout(()=>b.remove(),1800);
   }
 }
 
-document.addEventListener('click',()=>{
+/* Auto-play music once */
+document.addEventListener("click",()=>{
   let activePage = document.querySelector('.page.active').id;
-  if(activePage==='home') document.getElementById('musicHome').play();
-  if(activePage==='only') document.getElementById('musicOnly').play();
-  if(activePage==='reasons') document.getElementById('musicReasons').play();
-  if(activePage==='special') document.getElementById('musicSpecial').play();
+  if(activePage==="home") document.getElementById("musicHome").play();
+  if(activePage==="only") document.getElementById("musicOnly").play();
+  if(activePage==="reasons") document.getElementById("musicReasons").play();
+  if(activePage==="special") document.getElementById("musicSpecial").play();
 },{once:true});
 
+/* Scroll Fade */
 const scrollElements = document.querySelectorAll('.scroll-fade');
-function elementInView(el){
+function elementInView(el) {
   const rect = el.getBoundingClientRect();
-  return rect.top <= (window.innerHeight || document.documentElement.clientHeight) - 50;
+  return (rect.top <= (window.innerHeight || document.documentElement.clientHeight) - 50);
 }
-function displayScrollElements(){
-  scrollElements.forEach(el=>{if(elementInView(el)) el.classList.add('visible');});
+function displayScrollElements() {
+  scrollElements.forEach(el => {if (elementInView(el)) el.classList.add('visible');});
 }
-window.addEventListener('scroll',displayScrollElements);
-window.addEventListener('load',displayScrollElements);
-</script></body>
+window.addEventListener('scroll', displayScrollElements);
+window.addEventListener('load', displayScrollElements);
+</script>
+
+</body>
 </html>
