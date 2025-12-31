@@ -8,24 +8,20 @@
 <style>
 body{
   margin:0;
-  font-family: 'Arial', sans-serif;
-  background:#0e0e16;
+  font-family: Arial, sans-serif;
+  background:#0b0c14;
   color:#fff;
   text-align:center;
   overflow-x:hidden;
 }
-
 header{
   padding:20px;
   font-size:1.8rem;
-  background:rgba(0,0,0,0.4);
-  backdrop-filter:blur(6px);
+  background:rgba(0,0,0,0.5);
 }
-
 nav{
   margin:15px 0;
 }
-
 nav button{
   background:#ff4f9a;
   border:none;
@@ -33,55 +29,41 @@ nav button{
   margin:4px;
   border-radius:20px;
   color:white;
-  font-size:14px;
   cursor:pointer;
+  font-size:14px;
 }
-
 .page{
   display:none;
   max-width:800px;
   margin:20px auto;
-  background:rgba(255,255,255,0.08);
   padding:20px;
+  background:rgba(255,255,255,0.08);
   border-radius:18px;
   backdrop-filter:blur(10px);
-  animation:fadeIn 1.2s ease;
+  animation:fadeIn 1s ease;
 }
-
 .page.active{display:block;}
-
 .note{
   background:rgba(255,255,255,0.12);
-  margin:15px 0;
   padding:15px;
+  margin:15px 0;
   border-radius:14px;
   line-height:1.8;
-  animation:glow 4s ease-in-out infinite;
 }
-
 @keyframes fadeIn{
-  from{opacity:0; transform:translateY(20px);}
-  to{opacity:1; transform:translateY(0);}
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
 }
-
-@keyframes glow{
-  0%,100%{box-shadow:0 0 10px #ff4f9a;}
-  50%{box-shadow:0 0 25px #ff4f9a;}
-}
-
-/* falling emojis */
 .heart{
   position:fixed;
   top:-40px;
+  font-size:22px;
   animation:fall 7s linear infinite;
   pointer-events:none;
-  font-size:22px;
 }
 @keyframes fall{
   to{transform:translateY(110vh);}
 }
-
-/* heartbeat */
 .heartbeat{
   animation:heartbeat 2.5s ease-in-out infinite;
 }
@@ -89,9 +71,7 @@ nav button{
   0%,100%{transform:scale(1);}
   50%{transform:scale(1.04);}
 }
-
-/* Dill ki baaty colors */
-.dark{color:#d4d4d4;}
+.dark{color:#ddd;}
 .light{color:#ffb6d9;}
 .dua{color:#9ad0ff;}
 </style>
@@ -107,7 +87,7 @@ For My Beautiful Lovely Wife 🤌🏻💗
 <button onclick="showPage('home')">Home</button>
 <button onclick="showPage('only')">Only For You</button>
 <button onclick="showPage('reasons')">Reasons I Love You</button>
-<button onclick="showPage('special')">Special</button>
+<button onclick="openSpecial()">Special 🔐</button>
 </nav>
 
 <!-- MUSIC -->
@@ -181,7 +161,7 @@ Acha isky ilawa bohat reasons hain…
 Your Eyes 👀 Your Lips 👄 Your Nose 👃🏻  
 Your Eyebrows 👁️ Your Beautiful Neck 🐍  
 Your Hairs 🖤 Your Voice 🍬  
-Aur sab se important… **YOU 🌍**  
+Aur sab se important… YOU 🌍  
 You are my everything 🤌🏻💗
 </div>
 
@@ -189,8 +169,8 @@ You are my everything 🤌🏻💗
 Madam Jee…  
 Aap itni khoobsurat ho ke meri aankhein thak hi nahi sakti  
 aur mera dil kabhi bhar hi nahi sakta.  
-Main aapse is liye nahi pyaar karta ke aap perfect ho  
-balke is liye ke aap **meri ho** 💗
+Main aapse is liye pyaar karta hoon  
+kyun ke aap **meri ho** 💗
 </div>
 </div>
 
@@ -205,25 +185,30 @@ balke is liye ke aap **meri ho** 💗
 
 <div class="note">
 Ab koi nahi aayega mere dil mein  
-maine sari mohabbat tum par khatam kar di hai  
+maine sari mohabbat tum par khatam kar di  
 aur dil ke darwaze band kar diye hain
 </div>
 
 <div class="note heartbeat">
-<strong>Ayesha</strong>, main aapse bohat pyaar karta hoon 🤌🏻💗  
-Main masoom sa hoon… thora sa bacha hoon  
+<strong>Ayesha</strong>,  
+main aapse bohat pyaar karta hoon 🤌🏻💗  
+Main masoom sa hoon, thora sa bacha hoon  
 par bas aapka haath kabhi mat chhorna  
 bas mere saath rehna hamesha 💗
 </div>
 </div>
 
+<!-- HIDDEN SURPRISE -->
+<button id="secretBtn" onclick="openSpecial()"
+style="display:none;position:fixed;bottom:90px;right:20px;background:#ff4f9a;border:none;border-radius:50%;padding:14px;font-size:20px;color:white;box-shadow:0 0 20px #ff4f9a;">
+💗
+</button>
+
 <script>
 function showPage(id){
 document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
 document.getElementById(id).classList.add('active');
-
 document.querySelectorAll('audio').forEach(a=>a.pause());
-
 if(id==='home') musicHome.play();
 if(id==='only') musicOnly.play();
 if(id==='reasons') musicReasons.play();
@@ -233,13 +218,22 @@ if(id==='special') musicSpecial.play();
 function toggleMusic(){
 let playing=[musicHome,musicOnly,musicReasons,musicSpecial].find(a=>!a.paused);
 if(playing){playing.pause();}
-else{
-let active=document.querySelector('.page.active').id;
-showPage(active);
-}
+else{showPage(document.querySelector('.page.active').id);}
 }
 
-// emoji rain
+function openSpecial(){
+const pass=prompt("Enter the secret password 💗");
+if(pass==="1824"){showPage('special');}
+else{alert("Wrong password 🌙💔");}
+}
+
+setTimeout(()=>{secretBtn.style.display='block';},10000);
+
+document.addEventListener('click',function once(){
+musicHome.play();
+document.removeEventListener('click',once);
+});
+
 const emojis=['💗','🌙','💋'];
 setInterval(()=>{
 let e=document.createElement('div');
@@ -249,12 +243,6 @@ e.style.left=Math.random()*100+'vw';
 document.body.appendChild(e);
 setTimeout(()=>e.remove(),7000);
 },600);
-
-// autoplay after first touch
-document.addEventListener('click',function once(){
-musicHome.play();
-document.removeEventListener('click',once);
-});
 </script>
 
 </body>
