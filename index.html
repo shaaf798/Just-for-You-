@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For My Beautiful Lovely Wife 🤌🏻💗</title>
-
 <style>
 body{
   margin:0;
@@ -16,7 +15,6 @@ body{
   color:#333;
   text-align:center;
 }
-
 /* HEADER */
 header{
   background:#f7b7d3;
@@ -24,9 +22,8 @@ header{
   padding:18px;
   font-size:1.8rem;
 }
-
 /* NAV */
-nav{
+nav
   margin:15px;
 }
 nav button{
@@ -39,7 +36,6 @@ nav button{
   font-size:1rem;
   cursor:pointer;
 }
-
 /* PAGES */
 .page{
   display:none;
@@ -51,7 +47,6 @@ nav button{
 }
 .active{display:block;}
 h2{color:#ec407a;}
-
 /* NOTES */
 .note{
   background:#fde4ee;
@@ -61,8 +56,7 @@ h2{color:#ec407a;}
   font-size:1.05rem;
   line-height:1.6;
 }
-
-/* FADE */
+/* FADE GLOW */
 .fade-glow{
   animation:fade 2s ease;
 }
@@ -70,7 +64,6 @@ h2{color:#ec407a;}
   from{opacity:0;transform:translateY(15px);}
   to{opacity:1;transform:translateY(0);}
 }
-
 /* FALLING EMOJIS */
 .heart{
   position:fixed;
@@ -81,7 +74,6 @@ h2{color:#ec407a;}
 @keyframes fall{
   to{transform:translateY(110vh);opacity:0;}
 }
-
 /* MUSIC BUTTON */
 .music-btn{
   position:fixed;
@@ -95,27 +87,95 @@ h2{color:#ec407a;}
   font-size:14px;
   cursor:pointer;
 }
-
-/* HEARTBEAT */
-.heartbeat{
-  animation:heartbeat 2s ease-in-out infinite;
+/* SOFT HEARTBEAT ANIMATION */
+.heartbeat {
+  display: inline-block;
+  animation: heartbeat 2s ease-in-out infinite;
+  transform-origin: center;
 }
-@keyframes heartbeat{
-  0%,100%{transform:scale(1);}
-  50%{transform:scale(1.1);}
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.05); }
+  50% { transform: scale(1.1); }
+  75% { transform: scale(1.05); }
 }
-
-/* LOCK */
+/* FINAL LOVE ANIMATION */
+.final-love{
+  margin-top:25px;
+  font-size:2rem;
+  font-weight:bold;
+  color:#ff4f9a;
+  animation:loveGlow 3s ease-in-out infinite;
+}
+@keyframes loveGlow{
+  0%{opacity:.4;text-shadow:0 0 5px #ff4f9a;}
+  50%{opacity:1;text-shadow:0 0 25px #ff4f9a;}
+  100%{opacity:.6;text-shadow:0 0 10px #ff4f9a;}
+}
+/* BURST EFFECT */
+.burst{
+  position:fixed;
+  font-size:32px;
+  animation:burstFly 1.8s ease-out forwards;
+  pointer-events:none;
+  z-index:999;
+}
+@keyframes burstFly{
+  0%{transform:translate(0,0) scale(.5);opacity:1;}
+  100%{
+    transform:translate(
+      calc(-150px + 300px * var(--x)),
+      calc(-150px + 300px * var(--y))
+    ) scale(1.4);
+    opacity:0;
+  }
+}
+/* SCROLL FADE */
+.scroll-fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+.scroll-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* TYPEWRITER */
+.typewriter{
+  overflow: hidden;
+  white-space: pre-wrap;
+  border-right: .15em solid #ff4f9a;
+  animation: typing 12s steps(500, end), blink 0.75s step-end infinite;
+}
+@keyframes typing{
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes blink{
+  50% { border-color: transparent; }
+}
+/* SLOW HEARTBEAT FOR TYPEWRITER MESSAGE */
+.heartbeat.typewriter{
+  animation: heartbeat 3s ease-in-out infinite;
+}
+/* HIGHLIGHT NAME */
+.highlight{
+  color:#ff4f9a;
+  font-weight:bold;
+  text-shadow:0 0 8px #ff4f9a;
+}
+/* LOCK SCREEN */
 #lockScreen{
   position:fixed;
-  top:0;left:0;width:100%;height:100%;
-  background:rgba(0,0,0,.85);
+  top:0; left:0; width:100%; height:100%;
+  background: rgba(0,0,0,0.85);
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
   z-index:9999;
   color:white;
+  font-size:1.3rem;
 }
 #lockScreen input{
   padding:10px;
@@ -124,21 +184,41 @@ h2{color:#ec407a;}
   border:none;
   margin-top:10px;
 }
+#secretButton{
+  margin-top:15px;
+  padding:10px 15px;
+  background:#ff66a3;
+  color:white;
+  border:none;
+  border-radius:15px;
+  cursor:pointer;
+}
 </style>
 </head>
-
 <body>
 
 <!-- LOCK SCREEN -->
 <div id="lockScreen">
   <div>Enter PIN to unlock 💗</div>
-  <input type="password" id="pinInput" placeholder="Enter PIN">
+  <input type="password" id="pinInput" placeholder="Enter PIN"/>
   <button onclick="checkPin()">Unlock</button>
 </div>
 
-<header>
-  For My Beautiful Lovely Wife <span class="heartbeat">🤌🏻💗</span>
-</header>
+<header>For My Beautiful Lovely Wife <span class="heartbeat">🤌🏻💗</span></header>
+
+<!-- MUSIC -->
+<audio id="musicHome" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+<audio id="musicOnly" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+</audio>
+<audio id="musicReasons" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg">
+</audio>
+<audio id="musicSpecial" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" type="audio/mpeg">
+</audio>
 
 <button class="music-btn" onclick="toggleMusic()">🎵 Music</button>
 
@@ -147,100 +227,127 @@ h2{color:#ec407a;}
   <button onclick="showPage('only')">Only For You</button>
   <button onclick="showPage('reasons')">Reasons I Love You</button>
   <button onclick="showPage('special')">Special Message</button>
-  <button onclick="showPage('daily')">Daily Chat</button>
 </nav>
 
 <!-- HOME -->
-<div id="home" class="page active fade-glow">
+<div id="home" class="page active fade-glow scroll-fade">
   <h2>Welcome 💗</h2>
-  <p>
-Madam jee kash ap ye website hi khol ly kabi ap parhy ik bar sab kuch dubara se mene dill se likha hy sab kuch...
-  </p>
+  <p> Kese hn pata ni ab daikhti hn ya ni ap website miss karta hn bht me apko bht zaida pata hy galti hoi mere se bht bari na chahty howy b phr mene apko bht zaida hurt kar dia pata hy ap bht zaida hurt hoi hn par me fraudia ni hn fhoky baz ni hn apne hi kaha tha na or me ni hn sachi bas himat ni hoi yaar us raat message parhy sab mene phr pata ni kya howa mujy yaar me tu hamesha se apko kush daikhna chahta tha aoki Kushi ky kiyee dua karta tha roz kuch esa sochta tha ky apke face pe smile la sako apki smile daikh kar hi tu mujy sakoon milta tha par mene ni tha kabi socha ap mere sath hi comfortable ni hy me hi apki kushio ky beech me aya howa hn hota hy yaar mene socha b tha aksar jab apne bola tha ky ap mere sab se bari galti hn mujy lagta tha ap gussay me bolti hn par apne mera nam lia mera nam ly kat bola na ky shaaf ap ni hn comfort zone mera us time tu ni us time bas kuch ho raha tha bas Kisi tarah apko rokna tha apke samny a kar shayad me kabi apse door ni ja sakta na apko jany do ga us time jan nikal rahi hoti hy par phr mene gor kia apki baato par bht me waqee hi bht dukh de raha hn apko kabi kuch tu kabi kuch mazeed ni hurt karna chahta kit i hi bar message type kia mene b yakeen kary par send ni howa mere se b sochta tha ky kya pata kush hn has rhi hn or mera notification daikh kar sath hi apka mode kharab ho jayee pata ni kya reaction ho mere message daikh kar apka bas isi itny din bardasht karta raha mene na rabar pehni hy hath pe jab mere se raha ni na jata me apko message karny ki Koshish karta tu me phr wo rabar band zor se keenchta hn phr chorta hn dard hoti 4 5 bar kar ky phr me ruk jata Whatsapp hi ni open karta me tu job b start kar di hy raat pori sota ni hun subah pira din job aj b almost 50 hour ho jayee gy 8 bjy begair soyee ik mint b ni soya bata ni raha ky me bara udas hn me hun udas rota b hn par ab ni himat hoti apke smany apni shkal lany ki apki snaps b bht himat kar ky kholta hn me kitni fair khud se larai hoti darata hn khud ko me rabar band se ap snaps delete Karti phr or larai hoti khud se bas ab ni aya jata apke samny apki khusi zaida pyaari hy mujy ab bas uski dua karta hn or apke liyee mirha ky liyee Allah ap dono ko bht kush rakhy bht zaida pata wo jab me apni beti ka mind me lata na tu ab mirha ki image ati ik samny mix ci bht Pyaari Allah usko or apko bht zaida kush rakhy bht zaida or ho saky tu dill se maaf kar dena mujy mene jo b dukh diyee hn apko wo sab bas ap parhai kary achy se top kary wapis se kush rahy dosto ky sath rahy ghr walo ky sath rahy jo cheez apka dill kehta wo kary khul ky enjoy kary kush rahy me ni mazeed koi dukh do ga apko apke liyee hamesha fua karo ga me dill se Allah apko jaha b rakhy kush rakhy bht zaida hasta howa Pyaara sa rakhy me daikhta hn apki pics videos kuch hn mere pass wo kafi hn mere liyee daikh kar itna kuch bolta hn apko sab se pehli line ye hoti mere Pyaari jaan kitni Pyaari mashallah phr me kehta hn allah apko kush rakhy bht zaida or b bht baaty karta hb apki pics se bas apke samny ni aya jayee ga ab kabi zabardsti apki life me gussa tha thora late realize howa mujy mujy ni tha Pata mere se ap itna uncomfortable hn me sochta tha ky message kar ky tang karta hn apko phr laga ni par ab pata chal gia waqee hi tang kia bht apko kaha ap itni mashallah se Pyaari toper parhny wali bachi itni struggle Karti samjdar baat karti hafiza b mashallah se or kaha me fazool ka bin bulaya mehman pata ni kya samajta tha khud ko khair apko block ni kar sakta mere abi ni itni aukat hoi agar apka dill kary tu ap kar lena ni gila koi apse bas wo Snapchat rehny dena kabi message ni karo ga galti se b ni paka wada bas waha se block mat karna or mere notification b ni ayee gy paka bas wo rehny dena please dobty ko tinky ka shara bas wohi samaj ly hmmm bas khiyal rakhiyee ga apna aoko allah ky hawaly karta hn usko jo thik lagy khud ko b allah ky hawaly kar dia mene ab Allah ko pata sab dilk ki baaty b janta wo par me fraudia ni hn na ap mujy kabi kiis larki ky sath daikho gi ya suno gi b apki yaady kafi hn mere liyee zindagi bht pari hy abi Allah ky hawaly sab kuch Allah Hafiz 💗.</p>
 </div>
+  <p> kya howa hy mere jaan in pao pe kurban mere jaan kya ho ga q lagaya howa oper ye buta lag raha yaar dill kar raha poch lo par mesydaikh ky mazeed aoka mod kharab ho jayee ga or phr pizza b tu gift kia na kisi ne mere de yu ni leti acha koi ni gila ni kar raha bas chory khaiyal ralha kary koi painkiller khayee rest kary kam wegaira na kary abi dill phat raha message karny ko yaar kasam se raha ni ja raha hmm take care yaar 
 
 <!-- ONLY FOR YOU -->
 <div id="only" class="page fade-glow">
   <h2>Only For You 💗</h2>
+  <h3 style="color:#ec407a;">Dill ki baaty 💌</h3>
 
-  <div class="note">
-بِسمِ اللهِ الرَّحْمنِ الرَّحِيمِ<br><br>
-اللَّهُمَّ اكْتُبْنَا لِبَعْضِنَا فِي النَّصِيبِ<br><br>
-اے الله! ہم دونوں کو ایک دوسرے کے نصیب میں لکھ دے (آمین)
+  <div class="note fade-glow scroll-fade" style="text-align:center;">
+    <span style="color:#444;">بِسمِ اللهِ الرَّحْمنِ الرَّحِيمِ</span><br><br>
+    <span style="color:#888;">اللَّهُمَّ اكْتُبْنَا لِبَعْضِنَا فِي النَّصِيبِ</span><br><br>
+    <span style="color:#ec407a;">
+      اے الله !<br>
+      ہم دونوں کو ایک دوسرے کے نصیب میں لکھ دے (آمین)
+    </span>
   </div>
 
-  <div class="note">
-تم بچھڑو گے تو میں مر جاؤں گا؟ نہیں… میں ہنسنا چھوڑ دوں گا۔
+  <div class="note fade-glow scroll-fade">
+    تم بچھڑو گے تو میں مر جاؤں گا ؟؟<br>
+    نہیں میں مروں گا بالکل نہیں، میں ہمیشہ رؤں گا بھی نہیں لیکن میں ہنسنا چھوڑ دوں گا، میں کسی سے تمہارا ذکر نہیں کروں گا لیکن ہمیشہ تمہارے لیے دعا کروں گا، میں تمہیں جان کہنا چھوڑ دوں گا لیکن جان سے پیارے تم ہمیشہ رہو گے تمہیں پتہ ہے ؟؟ میں سانس تو لوں گا لیکن جینا چھوڑ دوں گا۔
   </div>
 
-  <div class="note">
-Meri rooh ko chhua hai tumne… tumse juda hona mere bas ki baat nahi
+  <div class="note fade-glow scroll-fade">
+    Meri rooh ko chhua hai tumne<br>
+    yakeen mano tumse juda hona ab mere bas ki baat nahi
+  </div>
+
+  <div class="note fade-glow scroll-fade">
+    میرے اختیار میں اگر ہو تو " تمہیں گلے لگا کر تمہارے چاروں طرف محبت کی اک لکیر کھینچ دوں کہ کوئی تم تک پہنچ نہ سکے، کوئی غم تمہیں کبھی نہ ستائے سارے خواب حقیقتوں میں بدل سکوں، تمہارے دن رات، صبح شام محبتوں سے سجا سکوں۔
   </div>
 </div>
 
 <!-- REASONS -->
 <div id="reasons" class="page fade-glow">
   <h2>Reasons I Love You 💗</h2>
-
-  <div class="note">You are my favorite hello and hardest goodbye.</div>
-  <div class="note">Your eyes, your smile, your soul.</div>
-  <div class="note">Aur sab se important — YOU 🌍</div>
+  <div class="note scroll-fade">You are my favorite hello and my hardest goodbye.</div>
+  <div class="note scroll-fade">With you, every ordinary moment becomes special.</div>
+  <div class="note scroll-fade">My heart feels at home when I'm with you.</div>
+  <div class="note scroll-fade">
+    Acha isky ilawa bohot reasons hain 💗<br><br>
+    Your Eyes 👀<br>
+    Your Lips 👄<br>
+    Your Nose 👃🏻<br>
+    Your Eye Brows 👁️<br>
+    Your Beautiful Neck 🐍<br>
+    Your Hair 🖤<br>
+    Your Voice 🍬<br><br>
+    Aur sab se important — <b>YOU 🌍</b><br><br>
+    I love you and every single part of you 🤌🏻💗
+  </div>
+  <div class="note scroll-fade">
+    Madam Jee, I fall for your beauty and your soul every single day 💗
+  </div>
 </div>
 
 <!-- SPECIAL -->
 <div id="special" class="page fade-glow">
   <h2>Special Message 💗</h2>
-
-  <div class="note" style="text-align:right;">
-آپ کو پتا ہے میں آپ کو اتنا سوچتا ہوں کہ آپ مجھے دیکھائی دیتی ہیں
+  <div class="note fade-glow scroll-fade" style="text-align:right;">
+    آپ کو پتا ہے میں آپ کو اتنا سوچتا ہوں کہ آپ مجھے دیکھائی دیتی ہیں
   </div>
 
-  <div class="note">
-Ayesha me apse bht pyaar karta hn… 🤌🏻💗
+  <div class="note fade-glow scroll-fade heartbeat typewriter">
+    Ayesha, me apse bht Pyaar karta hn bht zaida kehty hn ap apny mehbob ko kabi ye Sabit ni kar sakty ky ap us se kitna Pyaar karty ho or shayad sai baat hy apko b lagta ho ga bht kuch par hakeekat me bata b ni sakta or yaar baat suny na mera apko pata hy me masoom sa hn thora 🥺bacha hn abi chota par ap tu bari hn na ap naraz ni howa kary muj se baat kia kary mujy samjaya kary me samaj jao ga mujy thori late samaj ati hy par a jati hy par chora ni kary bht takleef hoti thi jab apne mujy har jaga se block kia howa tha me chah kar b apse baat ni tha kar sakta 💔ye rasta thora lamba hy abi mujy bas hamesha apke sath rehna hy baki sab ap khud daikh lena na maaf kar dia karna me maafi mango jab dant dia karna kuch ulta karo tu mar b lia karna kuch ni bolo ga par hath na chorna mera beech rasty me apke begair ik kadam b agy ni jao ga wahin kabar bany gi jidr ap chor kar jayee gi yakeen kary mere me ab kuch raha hi ni hy baki move on kya hota me tu khiyal me b esa kuch socho tu mout nazar ati hy samny bas mere sath rehna mera Sath Dena hamesha me sab kuch kar lo ga sab se lar lo ga agar ap mere sath ho gi tu bas yehi chahiy or kuch ni chahiy 🤌🏻💗
   </div>
 
-  <div class="note">
-Ab koi nhi aayega mere dil me maine sari mohabbat tum pr khatam kar di
+  <div class="note fade-glow scroll-fade" style="text-align:center;">
+    Ab koi nhi aayega mere dil me maine sari mohabbat tum pr khtm kr di Or dil ke darwaze band kar diye hai
   </div>
-</div>
 
-<!-- ✅ DAILY CHAT (NEW, ONLY ADDITION) -->
-<div id="daily" class="page fade-glow">
-  <h2>Daily Chat 💬💗</h2>
+  <!-- SECRET BUTTON -->
+  <button id="secretButton" onclick="showSecret()">💖 Secret Surprise</button>
 
-  <div class="note">Aaj khana khaya ya phir bhool gayi?</div>
-  <div class="note">Tumhari awaaz yaad aa rahi hai.</div>
-  <div class="note">Aaj mausam bhi tum jaisa soft hai.</div>
-  <div class="note">Bas poochna tha, theek ho?</div>
-  <div class="note">Tum online hoti ho to dil khush ho jata hai.</div>
-  <div class="note">Aaj bhi dua mein tumhara naam aaya.</div>
-  <div class="note">Miss you thora sa… shayad zyada.</div>
-  <div class="note">Tumhari ek smile ka intezar rehta hai.</div>
-  <div class="note">Chai pee li ya abhi baqi hai?</div>
-  <div class="note">Tum ho to sab theek lagta hai.</div>
-  <div class="note">Tumhari yaadein bohot pyari hain.</div>
-  <div class="note">Aaj bhi tum khayalon mein ho.</div>
-  <div class="note">Tumhari baatein sukoon deti hain.</div>
-  <div class="note">Khud ka khayal rakha karo.</div>
-  <div class="note">Tumhari hansi miss ho rahi hai.</div>
-  <div class="note">Tumhari ek message ka wait hota hai.</div>
-  <div class="note">Tum meri aadat ban chuki ho.</div>
-  <div class="note">Tumse baat ho jaye to din complete.</div>
-  <div class="note">Tum ho to sab kuch hai.</div>
-  <div class="note">Bas yun hi likhne ka dil kiya.</div>
+  <!-- SECRET IMAGES (Initially hidden) -->
+  <div id="secretImages" style="display:none; margin-top:20px;">
+    <img src="pic1.jpg" style="width:90%;max-width:320px;border-radius:15px;margin:10px;">
+    <img src="pic2.jpg" style="width:90%;max-width:320px;border-radius:15px;margin:10px;">
+    <img src="pic3.jpg" style="width:90%;max-width:320px;border-radius:15px;margin:10px;">
+  </div>
 </div>
 
 <script>
-let pin="1824";
+let pin = "1824";
+
 function checkPin(){
-  if(document.getElementById("pinInput").value===pin){
-    document.getElementById("lockScreen").style.display="none";
+  let input = document.getElementById('pinInput').value;
+  if(input === pin){
+    document.getElementById('lockScreen').style.display="none";
   }else{
     alert("Wrong PIN 💔");
   }
 }
+
 function showPage(id){
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('audio').forEach(a => a.pause());
+  if(id==="home") document.getElementById("musicHome").play();
+  if(id==="only") document.getElementById("musicOnly").play();
+  if(id==="reasons") document.getElementById("musicReasons").play();
+  if(id==="special") document.getElementById("musicSpecial").play();
+  if(id==="special") loveBurst();
+}
+
+function toggleMusic(){
+  let audios = Array.from(document.querySelectorAll('audio'));
+  let current = audios.find(a => !a.paused);
+  if(current) current.pause();
+  else{
+    let activePage = document.querySelector('.page.active').id;
+    if(activePage==="home") document.getElementById("musicHome").play();
+    if(activePage==="only") document.getElementById("musicOnly").play();
+    if(activePage==="reasons") document.getElementById("musicReasons").play();
+    if(activePage==="special") document.getElementById("musicSpecial").play();
+  }
 }
 
 /* Falling emojis */
@@ -248,13 +355,57 @@ const emojis=["💗","🌙","💋"];
 setInterval(()=>{
   const e=document.createElement("div");
   e.className="heart";
-  e.innerText=emojis[Math.floor(Math.random()*emojis.length)];
+  e.innerText=emojis[Math.floor(Math.random()*3)];
   e.style.left=Math.random()*100+"vw";
   document.body.appendChild(e);
   setTimeout(()=>e.remove(),6000);
 },500);
 
-function toggleMusic(){}
+/* Burst animation */
+function loveBurst(){
+  for(let i=0;i<25;i++){
+    const b=document.createElement("div");
+    b.className="burst";
+    b.innerText=emojis[Math.floor(Math.random()*3)];
+    b.style.left="50%";
+    b.style.top="60%";
+    b.style.setProperty("--x",Math.random());
+    b.style.setProperty("--y",Math.random());
+    document.body.appendChild(b);
+    setTimeout(()=>b.remove(),1800);
+  }
+}
+
+/* Auto-play music once */
+document.addEventListener("click",()=>{
+  let activePage = document.querySelector('.page.active').id;
+  if(activePage==="home") document.getElementById("musicHome").play();
+  if(activePage==="only") document.getElementById("musicOnly").play();
+  if(activePage==="reasons") document.getElementById("musicReasons").play();
+  if(activePage==="special") document.getElementById("musicSpecial").play();
+},{once:true});
+
+/* Scroll Fade */
+const scrollElements = document.querySelectorAll('.scroll-fade');
+function elementInView(el) {
+  const rect = el.getBoundingClientRect();
+  return rect.top <= (window.innerHeight || document.documentElement.clientHeight) - 50;
+}
+function displayScrollElements() {
+  scrollElements.forEach(el => { if (elementInView(el)) el.classList.add('visible'); });
+}
+window.addEventListener('scroll', displayScrollElements);
+window.addEventListener('load', displayScrollElements);
+
+/* Secret button */
+function showSecret(){
+  let answer = prompt("Solve the puzzle to unlock: What is 9+8?");
+  if(answer==="17"){
+    document.getElementById("secretImages").style.display="block";
+  }else{
+    alert("Wrong answer! 💔");
+  }
+}
 </script>
 
 </body>
